@@ -30,3 +30,10 @@ class Degrees(models.Model):
     degreesImage = models.ImageField(upload_to='images/')
     degreesDate = models.DateTimeField(auto_now_add=True)
 
+class Skills(models.Model):
+    user = models.ForeignKey(User, on_delete=models.CASCADE)  # Associez l'utilisateur à l'objet
+    skillsName = models.CharField(max_length=200)
+    skillsDescription = models.TextField()
+    skillsImage = models.ImageField(upload_to='images/')
+    skillsDate = models.DateTimeField(auto_now_add=True)
+
