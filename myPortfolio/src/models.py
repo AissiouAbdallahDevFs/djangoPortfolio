@@ -4,7 +4,7 @@ from django.contrib.auth.models import User  # Importez la classe User de Django
 
 class About(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)  # Associez l'utilisateur à l'objet
-    aboutName = models.CharField(max_length=200)
+    aboutTitle = models.CharField(max_length=200)
     aboutDescription = models.TextField()
     aboutImage = models.ImageField(upload_to='images/')
     skills = models.ManyToManyField('Skills')
@@ -36,4 +36,6 @@ class Skills(models.Model):
     skillsDescription = models.TextField()
     skillsImage = models.ImageField(upload_to='images/')
     skillsDate = models.DateTimeField(auto_now_add=True)
+    def __str__(self):
+            return self.skillsName # Renvoyer le nom de l'utilisateur
 
