@@ -20,7 +20,7 @@ jobs:
           python-version: 3.x  
       - name: Install dependencies
         run: |
-          pip install -r .requirements.txt
+          pip install -r src/requirements.txt
           pip install colorama  # Ajoutez cette ligne si vous utilisez colorama
 
       - name: Check branch and run tests
