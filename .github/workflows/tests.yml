@@ -28,7 +28,7 @@ jobs:
           if [[ "${{ github.event.pull_request.head.ref }}" == "AddTestUnit" ]]; then
             echo "Running tests for branch AddTestUnit..."
             cd myPortfolio
-            python manage.py test tests.testsGetUsers  # Remplacez par votre commande de test
+            python manage.py test  # Remplacez par votre commande de test
           else
             echo "No test requested for this branch."
           fi
