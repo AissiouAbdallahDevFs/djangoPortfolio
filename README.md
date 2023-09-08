@@ -18,4 +18,4 @@ Avant de commencer, assurez-vous d'avoir les éléments suivants installés sur 
 1. Clonez ce dépôt sur votre système :
 
    ```bash
-   git clone https://github.com/votre_utilisateur/votre_depot.git
+   git clone https://github.com/votre_utilisateur/votre_depot.git](https://github.com/AissiouAbdallahDevFs/djangoPortfolio.git)https://github.com/AissiouAbdallahDevFs/djangoPortfolio.git
