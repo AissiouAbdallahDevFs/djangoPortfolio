@@ -1,0 +1,34 @@
+name: Run Tests
+
+on:
+  pull_request:
+    types:
+      - opened
+      - synchronize
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Set up Python
+        uses: actions/setup-python@v2
+        with:
+          python-version: 3.x  
+      - name: Install dependencies
+        run: |
+          pip install -r myPortfolio/requirements.txt
+          pip install colorama  # Ajoutez cette ligne si vous utilisez colorama
+
+      - name: Check branch and run tests
+        run: |
+          if [[ "${{ github.event.pull_request.head.ref }}" == "AddTestUnit" ]]; then
+            echo "Running tests for branch AddTestUnit..."
+            cd myPortfolio
+            python manage.py test  # Remplacez par votre commande de test
+          else
+            echo "No test requested for this branch."
+          fi
