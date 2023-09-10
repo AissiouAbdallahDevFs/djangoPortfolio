@@ -1,9 +1,12 @@
 asgiref==3.7.2
+cffi==1.15.1
 colorama==0.4.6
+cryptography==41.0.3
 Django==4.2.5
 django-cors-headers==4.2.0
 djangorestframework==3.14.0
 Pillow==10.0.0
+pycparser==2.21
 python-decouple==3.8
 python-dotenv==1.0.0
 pytz==2023.3.post1

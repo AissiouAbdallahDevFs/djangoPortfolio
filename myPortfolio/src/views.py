@@ -6,7 +6,10 @@ from rest_framework.decorators import action
 from rest_framework import viewsets,status, permissions
 from rest_framework.authentication import SessionAuthentication, BasicAuthentication
 from rest_framework.permissions import IsAuthenticated
-from django.contrib.auth.decorators import login_required
+from cryptography.fernet import Fernet
+from decouple import config
+
+SECRET_KEY2 = config('SECRET_KEY2')
 
 class IsSuperuserAndAdminUser(permissions.BasePermission):
     def has_permission(self, request, view):
@@ -274,9 +277,14 @@ class MessagesViewSet(viewsets.ModelViewSet):
         message = {'detail': 'Added Successfully'}
         serializer = MessagesSerializer(data=request.data)
         if serializer.is_valid():
-            serializer.save()
-            return Response( message,status=status.HTTP_201_CREATED)
-        return Response( status=status.HTTP_400_BAD_REQUEST)
+            email_text = serializer.validated_data['emailUser']
+
+            email_encrypted = Fernet.encrypt(email_text.encode())
+            
+            serializer.save(emailUser=email_encrypted)
+            
+            return Response(message, status=status.HTTP_201_CREATED)
+        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
     @action(detail=False, methods=['delete'])
     def delete_action(self, request,id):
         if request.user.is_authenticated:
