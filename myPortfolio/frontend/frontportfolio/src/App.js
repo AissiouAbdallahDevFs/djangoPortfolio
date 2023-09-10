@@ -1,11 +1,11 @@
-import ExperienceBubble from './components/experiences/ExperienceBubble';
+
+import IntroductionBubble from './components/introduction/IntroductionBubble';
 import './App.css';
 
 function App() {
   return (
     <div className="App">
-        <h2>Experiences</h2>
-        <ExperienceBubble />
+        <IntroductionBubble />
     </div>
   );
 }

@@ -39,3 +39,6 @@ class Skills(models.Model):
     def __str__(self):
             return self.skillsName 
 
+class Messages(models.Model):
+    emailUser = models.CharField(max_length=200)
+    messageUser = models.TextField()
