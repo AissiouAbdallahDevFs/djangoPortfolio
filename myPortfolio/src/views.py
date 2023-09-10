@@ -174,8 +174,10 @@ class DegreesViewSet(viewsets.ModelViewSet):
     @action(detail=False, methods=['get'])
     def get_action(self, request):
         degrees = Degrees.objects.all()
+        print(degrees)
         serializer = DegreesSerializer(degrees, many=True)
-        return Response( status=status.HTTP_200_OK)
+        return Response(serializer.data, status=status.HTTP_200_OK)
+
     @action(detail=False, methods=['post'])
     def add_action(self, request):
         if request.user.is_authenticated:
@@ -256,5 +258,50 @@ class SkillsViewSet(viewsets.ModelViewSet):
                 return Response(status=status.HTTP_400_BAD_REQUEST)
         else:
             return Response({'detail': 'Unauthorized'}, status=status.HTTP_401_UNAUTHORIZED)
+class MessagesViewSet(viewsets.ModelViewSet):
+    queryset = Messages.objects.all()
+    serializer_class = MessagesSerializer
+    @action(detail=False, methods=['get'])
+    def get_action(self, request):
+        if request.user.is_authenticated:
+            messages = Messages.objects.all()
+            serializer = MessagesSerializer(messages, many=True)
+            return Response(serializer.data, status=status.HTTP_200_OK)
+        else:
+            return Response({'detail': 'Unauthorized'}, status=status.HTTP_401_UNAUTHORIZED)
+    @action(detail=False, methods=['post'])
+    def add_action(self, request):
+        message = {'detail': 'Added Successfully'}
+        serializer = MessagesSerializer(data=request.data)
+        if serializer.is_valid():
+            serializer.save()
+            return Response( message,status=status.HTTP_201_CREATED)
+        return Response( status=status.HTTP_400_BAD_REQUEST)
+    @action(detail=False, methods=['delete'])
+    def delete_action(self, request,id):
+        if request.user.is_authenticated:
+            message = {'detail': 'Delete Successfully'}
+            messages = Messages.objects.get(id=id)
+            messages.delete()
+            if messages:
+                return Response(message, status=status.HTTP_200_OK)
+            else:
+                return Response(status=status.HTTP_400_BAD_REQUEST)
+        else:
+            return Response({'detail': 'Unauthorized'}, status=status.HTTP_401_UNAUTHORIZED)
+    @action(detail=False, methods=['put'])
+    def put_action(self, request,id):
+        if request.user.is_authenticated:
+            messages = Messages.objects.get(id=id)
+            messages.save()
+            if messages:
+                return Response(status=status.HTTP_200_OK)
+            else:
+                return Response(status=status.HTTP_400_BAD_REQUEST)
+        else:
+            return Response({'detail': 'Unauthorized'}, status=status.HTTP_401_UNAUTHORIZED)
+
+
+
         
     

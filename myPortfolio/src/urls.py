@@ -36,5 +36,10 @@ urlpatterns = [
     path('skills/add', SkillsViewSet.as_view({'post': 'add_action'}), name='Skills'),
     path('skills/delete/<int:id>', SkillsViewSet.as_view({'delete': 'delete_action'}), name='Skills'),
     path('skills/update/<int:id>', SkillsViewSet.as_view({'put': 'put_action'}), name='Skills'),
+    # url de la views MessagesViewSet
+    path('messages/', MessagesViewSet.as_view({'get': 'get_action'}), name='custom-messages'),
+    path('messages/add', MessagesViewSet.as_view({'post': 'add_action'}), name='Messages'),
+    path('messages/delete/<int:id>', MessagesViewSet.as_view({'delete': 'delete_action'}), name='Messages'),
+    path('messages/update/<int:id>', MessagesViewSet.as_view({'put': 'put_action'}), name='Messages'),
      
 ]

@@ -20,12 +20,12 @@ const ExperienceBubble = () => {
   }, []);
 
   return (
-    <div className="experience-bubble p-12">
+    <div className="experience-bubble p-4 sm:p-12">
       {experienceData && (
         <div className="bg-white dark:bg-gray-800 shadow-md rounded-lg overflow-hidden mx-auto max-w-sm">
-          <img className="w-full h-16 object-cover object-center" src={`${baseUrl}${experienceData.experienceImage}`} alt={experienceData.experienceName} />
+          <img className="w-full h-48 sm:h-16 object-cover object-center" src={`${baseUrl}${experienceData.experienceImage}`} alt={experienceData.experienceName} />
           <div className="p-4">
-            <h2 className="text-xl font-semibold text-gray-800 dark:text-white mb-2">{experienceData.experienceName}</h2>
+            <h2 className="text-xl sm:text-2xl font-semibold text-gray-800 dark:text-white mb-2">{experienceData.experienceName}</h2>
             <p className="text-gray-600 dark:text-gray-400">{experienceData.experienceDescription}</p>
           </div>
         </div>
@@ -35,3 +35,4 @@ const ExperienceBubble = () => {
 };
 
 export default ExperienceBubble;
+
