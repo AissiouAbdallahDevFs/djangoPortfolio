@@ -220,11 +220,12 @@ class SkillsViewSet(viewsets.ModelViewSet):
     def get_action(self, request):
         skills = Skills.objects.all()
         serializer = SkillsSerializer(skills, many=True)
-        return Response( status=status.HTTP_200_OK)
+        return Response(serializer.data, status=status.HTTP_200_OK)
     @action(detail=False, methods=['post'])
     def add_action(self, request):
         if request.user.is_authenticated:
             message = {'detail': 'Added Successfully'}
+            print(request.data) 
             serializer = SkillsSerializer(data=request.data)
             if serializer.is_valid():
                 serializer.save()

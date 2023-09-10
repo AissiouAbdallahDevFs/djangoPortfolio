@@ -13,12 +13,6 @@ class GroupSerializer(serializers.ModelSerializer):
         model = Group
         fields = ('id', 'name')
 
-class AboutSerializer(serializers.ModelSerializer):
-    skills = Skills.objects.all()
-    class Meta:
-        model = About
-        fields = '__all__'
-
 class ExperienceSerializer(serializers.ModelSerializer):
     class Meta:
         model = Experience
@@ -37,4 +31,10 @@ class DegreesSerializer(serializers.ModelSerializer):
 class SkillsSerializer(serializers.ModelSerializer):
     class Meta:
         model = Skills
+        fields = '__all__'
+
+class AboutSerializer(serializers.ModelSerializer):
+    skills = SkillsSerializer(many=True)
+    class Meta:
+        model = About
         fields = '__all__'
