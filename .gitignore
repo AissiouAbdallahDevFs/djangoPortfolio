@@ -1,3 +1,4 @@
 env/
 myPortfolio/images/
 test.env/
+.env/
