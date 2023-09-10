@@ -18,7 +18,7 @@ const ContactForm = () => {
     e.preventDefault();
 
     axios
-      .post('http://127.0.0.1:8000/src/messages/add', formData)
+      .post('https://nabdou.pythonanywhere.com/src/messages/add', formData)
       .then((response) => {
           toast.success('Message envoyé avec succès !',  {
             position: 'top-right',
@@ -39,7 +39,7 @@ const ContactForm = () => {
 
   return (
     <div className="contact-form bg-gray-100 p-6 rounded-lg shadow-md">
-      <h2 className="text-2xl font-semibold mb-4">Contactez-nous</h2>
+      <h2 className="text-2xl font-semibold mb-4">Contactez-Moi</h2>
       <form onSubmit={handleSubmit}>
         <div className="mb-4">
           <label htmlFor="emailUser" className="block text-gray-600">Email :</label>

@@ -9,7 +9,7 @@ import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
 
 
-const baseUrl = 'http://127.0.0.1:8000';
+const baseUrl = 'https://nabdou.pythonanywhere.com';
 
 const Skill = ({ skill }) => (
   <div key={skill.id} className="skill">

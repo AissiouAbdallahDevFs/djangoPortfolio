@@ -3,7 +3,7 @@ import axios from 'axios';
 
 const ExperienceBubble = () => {
   const [experienceData, setExperienceData] = useState(null);
-  const baseUrl = 'http://127.0.0.1:8000';
+  const baseUrl = 'https://nabdou.pythonanywhere.com';
 
   useEffect(() => {
     axios.get(`${baseUrl}/src/experience/`)
